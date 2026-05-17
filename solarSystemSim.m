@@ -6,13 +6,13 @@ G = 6.674e-11; % Gravitational constant, m^3 kg^-1 s^-2
 %% Simulation parameters
 
 % Points in time defined relative to the Unix epoch (1 Jan 1970, 00:00:00 UTC)
-t_start = posixtime(datetime(2026, 05, 16, 15, 48, 0, 'TimeZone', 'UTC')); % simulation start date and time
-t_end   = posixtime(datetime(2027, 05, 16, 15, 48, 0, 'TimeZone', 'UTC')); % simulation end date and time
-timeWarpFactor = 10; % Simulation speed factor
-realStepDuration = 0.05; % Real time between sim steps in seconds, essentially framerate
+t_start = posixtime(datetime(2026, 05, 17, 18, 25, 0, 'TimeZone', 'UTC')); % simulation start date and time
+t_end   = posixtime(datetime(2046, 05, 17, 18, 25, 0, 'TimeZone', 'UTC')); % simulation end date and time
+timeWarpFactor = 1; % Simulation speed factor
+realStepDuration = 1/30; % Real time between sim steps in seconds, essentially framerate
 dt = timeWarpFactor * realStepDuration; % Each timestep is one second of real time, so at 1000x timewarp, dt is 1000 seconds
-scaleAU = 2; % Radius of the display in astronomical units.
-referenceBody = 'Sol'; % or 'Earth', 'Mars', etc.
+scaleAU = 0.1; % Radius of the display in astronomical units.
+referenceBody = 'Earth'; % or 'Earth', 'Mars', etc.
 
 %% Initialise
 
