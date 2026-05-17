@@ -11,7 +11,7 @@ t_end   = posixtime(datetime(2046, 05, 17, 18, 25, 0, 'TimeZone', 'UTC')); % sim
 timeWarpFactor = 1; % Simulation speed factor
 realStepDuration = 1/30; % Real time between sim steps in seconds, essentially framerate
 dt = timeWarpFactor * realStepDuration; % Each timestep is one second of real time, so at 1000x timewarp, dt is 1000 seconds
-scaleAU = 0.1; % Radius of the display in astronomical units.
+scaleAU = 0.05; % Radius of the display in astronomical units.
 referenceBody = 'Earth'; % or 'Earth', 'Mars', etc.
 
 %% Initialise

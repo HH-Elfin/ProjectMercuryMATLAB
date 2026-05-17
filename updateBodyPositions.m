@@ -20,6 +20,11 @@ function system = updateBodyPositions(bodies, t)
         omega = deg2rad(system(i).argumentOfPeriapsis);
         M0    = deg2rad(system(i).meanAnomaly);
         mu    = system(i).mu;
+        
+        % Apply apsidal and nodal precession if specified (e.g. Luna)
+        % Rates are deg/day; t is seconds since Unix epoch
+        RAAN  = RAAN  + deg2rad(system(i).raanPrecessionRate  / 86400) * t;
+        omega = omega + deg2rad(system(i).apsidalPrecessionRate / 86400) * t;
 
         % Step 1: Propagate mean anomaly
         n = sqrt(mu / a^3);         % Mean motion (rad/s)

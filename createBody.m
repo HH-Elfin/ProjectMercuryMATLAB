@@ -14,6 +14,8 @@ function body = createBody(options)
         options.velocity (3,1) double = [NaN; NaN; NaN] % Cartesian velocity (u,v,w). Calculated at runtime.
         options.mu (1,1) double = NaN % Gravitational parameter mu (G*M).
         options.colour (1,3) double {mustBeInRange(options.colour, 0, 1)} = [1, 1, 1] % Display colour for the planet.
+        options.raanPrecessionRate (1,1) double = 0
+        options.apsidalPrecessionRate (1,1) double = 0
     end
 
     body = options;

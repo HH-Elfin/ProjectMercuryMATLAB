@@ -13,9 +13,7 @@ function bodies = linkParents(bodies, G)
 
         % In linkParents, after resolving parent index:
         if ~isempty(bodies(i).parent)
-            bodies(i).mu = G * bodies(bodies(i).parent).mass;
+            bodies(i).mu = G * (bodies(bodies(i).parent).mass + bodies(i).mass);
         end
     end
 end
-
-
