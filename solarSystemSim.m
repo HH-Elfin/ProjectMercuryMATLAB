@@ -8,16 +8,18 @@ G = 6.674e-11; % Gravitational constant, m^3 kg^-1 s^-2
 % Points in time defined relative to the Unix epoch (1 Jan 1970, 00:00:00 UTC)
 %t_start = posixtime(datetime(1970, 01, 01, 00, 00, 00, 'TimeZone', 'UTC')); % simulation start date and time
 t_start = posixtime(datetime(2026, 05, 17, 18, 25, 00, 'TimeZone', 'UTC')); % simulation start date and time
-t_end   = posixtime(datetime(2026, 05, 17, 18, 27, 00, 'TimeZone', 'UTC')); % simulation end date and time
-timeWarpFactor = 1; % Simulation speed factor
-realStepDuration = 1/30; % Real time between sim steps in seconds, essentially framerate
+t_end   = posixtime(datetime(2029, 05, 17, 18, 27, 00, 'TimeZone', 'UTC')); % simulation end date and time
+timeWarpFactor = 36*60; % Simulation speed factor
+realStepDuration = 1/20; % Real time between sim steps in seconds, essentially framerate
 dt = timeWarpFactor * realStepDuration; % Each timestep is one second of real time, so at 1000x timewarp, dt is 1000 seconds
-scaleAU = 0.05; % Radius of the display in astronomical units.
+scaleAU = 0.2/5340; % Radius of the display in astronomical units.
 referenceBody = 'Earth'; % or 'Earth', 'Mars', etc.
 
 %% Initialise
 
-bodies = celestialBodies_sol();
+%bodies = celestialBodies_sol();
+%bodies = celestialBodies_projectMercury();
+bodies = celestialBodies_propagatorTest();
 bodies = linkParents(bodies, G);
 t = t_start;
 stepCount = 0;

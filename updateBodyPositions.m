@@ -26,17 +26,6 @@ function system = updateBodyPositions(bodies, t)
         RAAN  = RAAN  + deg2rad(system(i).raanPrecessionRate  / 86400) * t;
         omega = omega + deg2rad(system(i).apsidalPrecessionRate / 86400) * t;
 
-        if strcmp(system(i).name, 'Luna')
-            fprintf('omega mod 360 = %.4f deg\n', mod(rad2deg(omega), 360));
-            fprintf('RAAN  mod 360 = %.4f deg\n', mod(rad2deg(RAAN),  360));
-            fprintf('M     mod 360 = %.4f deg\n', mod(rad2deg(M),     360));
-            fprintf('n = %.10e rad/s\n', sqrt(mu / a^3));
-            fprintf('n from Horizons PR = %.10e rad/s\n', 2*pi / 2.373217524880363e6);
-            fprintf('period = %.2f days\n', 2*pi / sqrt(mu/a^3) / 86400);
-            fprintf('mu = %.10e\n', mu);
-            fprintf('G*(Me+Ml) = %.10e\n', 6.674e-11 * (5.97217e24 + 7.346e22));
-        end
-
         % Step 1: Propagate mean anomaly
         n = sqrt(mu / a^3);         % Mean motion (rad/s)
         M = mod(M0 + n * t, 2*pi);  % Mean anomaly at time t
